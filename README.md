@@ -11,7 +11,7 @@ A command-line tool to view, manage, and control running services on Linux.
 
 ## Installation
 ```bash
-git clone <repo_url> chomu
+git clone https://github.com/gl1tch0x1/chomu.git
 cd chomu
 chmod +x install.sh
 ./install.sh
