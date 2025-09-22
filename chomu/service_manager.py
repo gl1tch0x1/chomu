@@ -49,14 +49,48 @@ def get_memory_usage_kb(pid):
         return 0
 
 def show_service_table(services):
+    import shutil
+    from termcolor import colored
     if not services:
         print("No running services found.")
         return
-    table_data = [
-        [srv["id"], srv["unit"], srv["pid"], format_memory_kb_to_mb(srv["mem_kb"]), srv["status"], srv["description"]]
-        for srv in services
-    ]
-    print(tabulate(table_data, headers=["ID", "UNIT", "PID", "MEMORY", "STATUS", "DESCRIPTION"], tablefmt="fancy_grid"))
+
+    # Colorize status
+    def color_status(status):
+        if status.lower() == "active":
+            return colored(status, "green", attrs=["bold"])
+        elif status.lower() in ("failed", "inactive", "dead"):
+            return colored(status, "red", attrs=["bold"])
+        else:
+            return colored(status, "yellow", attrs=["bold"])
+
+    # Truncate description if too long
+    def truncate(text, width):
+        return text if len(text) <= width else text[:width-3] + "..."
+
+    # Get terminal width for dynamic formatting
+    term_width = shutil.get_terminal_size((120, 20)).columns
+    desc_width = max(20, min(40, term_width - 80))
+
+    table_data = []
+    total_mem = 0
+    for srv in services:
+        mem_mb = format_memory_kb_to_mb(srv["mem_kb"])
+        total_mem += srv["mem_kb"]
+        table_data.append([
+            srv["id"],
+            srv["unit"],
+            srv["pid"],
+            mem_mb,
+            color_status(srv["status"]),
+            truncate(srv["description"], desc_width)
+        ])
+
+    headers = ["ID", "UNIT", "PID", "MEMORY", "STATUS", "DESCRIPTION"]
+    print("\n" + tabulate(table_data, headers=headers, tablefmt="fancy_grid", stralign="center", numalign="center"))
+    print("\n" + "-" * term_width)
+    print(f"Total Services: {len(services)}    Total Memory: {format_memory_kb_to_mb(total_mem)}")
+    print("-" * term_width + "\n")
 
 def kill_service(services, service_id):
     try:
