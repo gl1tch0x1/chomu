@@ -11,7 +11,7 @@ A command-line tool to view, manage, and control running services on Linux.
 
 ## Installation
 ```bash
-git clone <repo_url> chomu
+git clone https://github.com/gl1tch0x1/chomu.git
 cd chomu
 chmod +x install.sh
 ./install.sh
@@ -24,14 +24,14 @@ sudo chomu
 ```
 ## Example commands inside the tool:
 
-s 1   # Show details of service with ID 1
-p 2   # Show all processes of service with ID 2
-k 3   # Kill service with ID 3
-K     # Kill all services
-t 4   # Stop service with ID 4
-T     # Stop all services
-r     # Refresh list
-q     # Quit
+* s 1   # Show details of service with ID 1
+* p 2   # Show all processes of service with ID 2
+* k 3   # Kill service with ID 3
+* K     # Kill all services
+* t 4   # Stop service with ID 4
+* T     # Stop all services
+* r     # Refresh list
+* q     # Quit
 
 ## Sample output:
 
