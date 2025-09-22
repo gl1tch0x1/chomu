@@ -4,7 +4,7 @@ setup(
     name="chomu",
     version="1.0.0",
     packages=find_packages(),
-    install_requires=["psutil", "tabulate"],
+    install_requires=["psutil", "tabulate", "termcolor"],
     entry_points={
         "console_scripts": [
             "chomu=chomu.main:main",
