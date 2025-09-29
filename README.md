@@ -8,6 +8,11 @@
 
 ---
 
+Chomu is a powerful and user-friendly command-line tool for Linux that allows you to view, manage, and control running system services interactively. It provides a clear overview of all running services, lets you inspect details, manage processes, and perform service actions with ease.
+
+---
+
+
 ## 📖 Table of Contents
 
 - [Features](#features)
@@ -25,11 +30,6 @@
 - [Disclaimer](#disclaimer)
 
 ---
-
-Chomu is a powerful and user-friendly command-line tool for Linux that allows you to view, manage, and control running system services interactively. It provides a clear overview of all running services, lets you inspect details, manage processes, and perform service actions with ease.
-
----
-
 
 
 ## 🚀 Features
