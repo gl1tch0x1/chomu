@@ -3,7 +3,7 @@
 # Chomu - Linux Service Manager
 
 <p align="center">
-	<img src="https://img.shields.io/badge/Chomu-Production%20Ready-brightgreen" alt="Chomu Production Ready"/>
+  <img src="https://img.shields.io/badge/From%20Open--Source%20for%20Open--Source-blue" alt="From Open-Source for Open-Source"/>
 </p>
 
 ---
