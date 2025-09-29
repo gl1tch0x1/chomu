@@ -2,9 +2,17 @@
 # updater.sh - Chomu auto-updater script
 # Checks for updates from the official GitHub repo and updates if a new version is available.
 
+
 REPO="gl1tch0x1/chomu"
 LOCAL_VERSION=$(python3 setup.py --version 2>/dev/null)
-LATEST_VERSION=$(curl -s https://api.github.com/repos/$REPO/releases/latest | grep '"tag_name"' | cut -d '"' -f4)
+
+# Use a GitHub token if available to avoid rate limits
+if [ -n "$GITHUB_TOKEN" ]; then
+    AUTH_HEADER="-H \"Authorization: token $GITHUB_TOKEN\""
+    LATEST_VERSION=$(curl -s -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/repos/$REPO/releases/latest | grep '"tag_name"' | cut -d '"' -f4)
+else
+    LATEST_VERSION=$(curl -s https://api.github.com/repos/$REPO/releases/latest | grep '"tag_name"' | cut -d '"' -f4)
+fi
 
 if [ -z "$LATEST_VERSION" ]; then
     echo "[!] Could not fetch latest version info. Check your internet connection or GitHub API limits."
