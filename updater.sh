@@ -19,8 +19,11 @@ if [ "$LOCAL_VERSION" = "$LATEST_VERSION" ]; then
     exit 0
 else
     echo "[!] Update available: $LOCAL_VERSION → $LATEST_VERSION"
-    echo "[*] Updating Chomu..."
+    echo "[*] Stashing local changes (if any)..."
+    git stash || true
+    echo "[*] Fetching and resetting to latest main..."
     git fetch --all && git reset --hard origin/main
+    echo "[*] Running install.sh to update dependencies and code..."
     ./install.sh
     echo "[✓] Chomu has been updated to version $LATEST_VERSION."
 fi

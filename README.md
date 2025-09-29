@@ -1,11 +1,38 @@
 
+
 # Chomu - Linux Service Manager
+
+<p align="center">
+	<img src="https://img.shields.io/badge/Chomu-Production%20Ready-brightgreen" alt="Chomu Production Ready"/>
+</p>
+
+---
+
+## 📖 Table of Contents
+
+- [Features](#features)
+- [Quick Start](#quick-start)
+- [Installation](#installation)
+- [Usage](#usage)
+- [CLI Commands](#cli-commands)
+- [Example Output](#example-output)
+- [Updating Chomu](#updating-chomu)
+- [Uninstallation](#uninstallation)
+- [Requirements](#requirements)
+- [License](#license)
+- [Author](#author)
+- [Contributing](#contributing)
+- [Disclaimer](#disclaimer)
+
+---
 
 Chomu is a powerful and user-friendly command-line tool for Linux that allows you to view, manage, and control running system services interactively. It provides a clear overview of all running services, lets you inspect details, manage processes, and perform service actions with ease.
 
 ---
 
-## Features
+
+
+## 🚀 Features
 
 - **List Running Services:**
 	- Displays all running services with ID, unit name, PID, memory usage, status (color-coded), and description.
@@ -13,10 +40,8 @@ Chomu is a powerful and user-friendly command-line tool for Linux that allows yo
 	- View detailed information and the last 20 logs for any running service.
 - **Process Inspection:**
 	- List all processes spawned by a service, including memory usage.
-- **Kill Services:**
-	- Terminate the main PID of a service or all running services at once.
-- **Stop Services:**
-	- Stop/deactivate a specific service or all running services using `systemctl`.
+- **Kill/Stop Services:**
+	- Terminate or stop any service or all running services at once.
 - **Interactive CLI:**
 	- Menu-driven interface for easy navigation and command execution.
 - **Root Check:**
@@ -24,9 +49,61 @@ Chomu is a powerful and user-friendly command-line tool for Linux that allows yo
 - **Auto-Updater:**
 	- Use `updater.sh` to check for and install the latest version from GitHub.
 
+
+### 🔒 Advanced Cybersecurity & Monitoring Features
+
+- **Anomaly Detection:**
+	- Detects abnormal CPU/memory usage or unexpected service restarts.
+- **Service Hardening Recommendations:**
+	- Warns about insecure configurations (e.g., SSH root login enabled).
+- **Real-Time Monitoring & Alerts:**
+	- Live updates and notifications for service state/resource changes.
+- **Audit Logging:**
+	- Logs all actions (service stops, kills, etc.) with timestamps and user info.
+- **Threat Intelligence Integration:**
+	- Checks running services/processes against threat intelligence feeds.
+- **Automated Incident Response:**
+	- User-defined rules for auto-restart/kill and a panic button for emergencies.
+- **Service Integrity Checking:**
+	- Verifies service binaries/configs against known-good hashes.
+- **Role-Based Access Control (RBAC):**
+	- User authentication for sensitive actions.
+- **Network Connections View:**
+	- Shows active network connections for each service/process.
+- **SIEM/SOAR Integration:**
+	- Export logs/events to SIEM platforms (Splunk, ELK, etc.).
+- **Whitelisting/Blacklisting:**
+	- Define allowed/blocked services and enforce policies.
+- **Scheduled Security Scans:**
+	- Integrate with tools like Lynis and display scan results in the CLI.
+
 ---
 
-## Installation
+---
+
+
+## ⚡ Quick Start
+
+1. **Clone and Install:**
+	```bash
+	git clone https://github.com/gl1tch0x1/chomu.git
+	cd chomu
+	chmod +x install.sh
+	./install.sh
+	```
+2. **Run the Tool:**
+	```bash
+	sudo chomu
+	```
+3. **Update Anytime:**
+	```bash
+	chmod +x updater.sh
+	./updater.sh
+	```
+
+---
+
+## 🛠️ Installation
 
 ### 1. Clone the Repository
 ```bash
@@ -42,19 +119,24 @@ chmod +x install.sh
 This will:
 - Check for Python 3 and required tools
 - Create a virtual environment
-- Install all dependencies (`psutil`, `tabulate`, `termcolor`)
+- Install all dependencies (`psutil`, `tabulate`, `termcolor`, and more)
 - Install Chomu globally as a CLI tool
 
 ---
 
-## Usage
+
+## 🖥️ Usage
+
 
 ### Start the Tool
 ```bash
 sudo chomu
 ```
 
-### Interactive Commands (inside Chomu)
+---
+
+## 💡 CLI Commands
+
 | Command      | Description                                 |
 |--------------|---------------------------------------------|
 | `s <ID>`     | Show details of a service                   |
@@ -68,7 +150,10 @@ sudo chomu
 
 ---
 
-## Example Output
+---
+
+
+## 📊 Example Output
 
 ```
 ╒════╤══════════════════════════════╤════════╤══════════╤══════════╤═══════════════════════════╕
@@ -81,7 +166,8 @@ sudo chomu
 
 ---
 
-## Updating Chomu
+
+## 🔄 Updating Chomu
 
 To check for updates and upgrade to the latest version:
 ```bash
@@ -91,7 +177,8 @@ chmod +x updater.sh
 
 ---
 
-## Uninstallation
+
+## 🗑️ Uninstallation
 
 To uninstall Chomu:
 ```bash
@@ -101,31 +188,46 @@ Or remove the installed files from `/usr/local/bin/chomu` and the Python site-pa
 
 ---
 
-## Requirements
+
+## ⚙️ Requirements
 - Python 3.8+
 - Linux system with `systemctl` and `journalctl`
-- `psutil`, `tabulate`, `termcolor` (installed automatically)
+- `psutil`, `tabulate`, `termcolor`, `requests`, `PyYAML` (installed automatically)
+- (Optional for advanced features) `lynis`, access to threat intelligence APIs, SIEM/SOAR endpoints
 
 ---
 
-## License
+
+## 📄 License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-## Author
+
+## 👤 Author
 - Cyb3rspl0it (gl1tch0x1)
 
 ---
 
-## Contributing
+
+
+## 🤝 Contributing
 
 Pull requests and suggestions are welcome! Please open an issue or submit a PR on GitHub.
+If you want to add new security modules, see the `chomu/security/` and `chomu/monitoring/` directories for examples.
 
 ---
 
-## Disclaimer
+
+## ⚠️ Disclaimer
+
 
 Chomu is provided as-is, without warranty. Use at your own risk. Always review actions before killing or stopping system services.
+
+---
+
+## 📚 Full Documentation
+
+For complete documentation, usage examples, and advanced configuration, please see the [Chomu Wiki](https://github.com/gl1tch0x1/chomu/wiki) or open the `docs/` folder (if available). You can also click the Table of Contents above to jump to any section.
 
