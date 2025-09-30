@@ -1,12 +1,3 @@
-echo "[*] Checking Python3 installation..."
-echo "[*] Creating virtual environment..."
-echo "[*] Installing dependencies..."
-echo "[*] Installing Chomu globally..."
-sudo python3 setup.py install
-echo "[*] Cleaning up..."
-deactivate
-echo "[*] Installation complete!"
-echo "You can now run the tool by typing: chomu"
 
 #!/bin/bash
 set -e
@@ -26,9 +17,14 @@ for pkg in git curl; do
     fi
 done
 
-echo "[*] Creating virtual environment..."
-python3 -m venv .venv
-source .venv/bin/activate
+
+if [ ! -d ".venv" ]; then
+    echo "[*] Creating virtual environment..."
+    python3 -m venv .venv
+fi
+
+echo "[*] Activating virtual environment..."
+. .venv/bin/activate
 
 echo "[*] Installing/updating pip..."
 pip install --upgrade pip

@@ -1,7 +1,7 @@
 import subprocess
 import psutil
 from tabulate import tabulate
-from .utils import format_memory_kb_to_mb
+from chomu.utils.common import format_memory_kb_to_mb
 
 def get_running_services():
     services = []

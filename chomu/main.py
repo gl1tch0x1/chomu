@@ -1,5 +1,5 @@
 import sys
-from .utils import check_root, confirm_action, safe_input
+from chomu.utils.common import check_root, confirm_action, safe_input
 from .service_manager import (
     get_running_services,
     show_service_table,
